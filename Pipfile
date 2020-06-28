@@ -1,0 +1,12 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[packages]
+boto3 = ">=1.13.24,<2"
+click = ">=7.1.2,<8"
+PrettyTable = ">=0.7.2,<1"
+
+[requires]
+python_version = "3.8"
