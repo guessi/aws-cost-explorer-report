@@ -4,9 +4,9 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
-boto3 = ">=1.13.24,<2"
-click = ">=7.1.2,<8"
-PrettyTable = ">=0.7.2,<1"
+boto3 = ">=1.18.17,<2"
+click = ">=8.0.1,<9"
+PrettyTable = ">=2.1.0,<3"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
