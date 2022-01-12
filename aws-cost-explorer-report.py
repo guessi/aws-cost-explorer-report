@@ -77,8 +77,8 @@ def fill_table_content(results: list, start: str, end: str) -> None:
 
 @click.command()
 @click.option('-P', '--profile', help='profile name')
-@click.option('-S', '--start', help='start date')
-@click.option('-E', '--end', help='end date')
+@click.option('-S', '--start', help='start date (default: 1st date of current month)')
+@click.option('-E', '--end', help='end date (default: last date of current month)')
 def report(profile: str, start: str, end: str) -> None:
     # set start/end to current month if not specify
     if not start or not end:
