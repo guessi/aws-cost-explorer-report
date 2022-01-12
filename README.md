@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Python 3.5 (or later)
+- Python 3.7 (or later)
 
 
 ## Setup Requirements
