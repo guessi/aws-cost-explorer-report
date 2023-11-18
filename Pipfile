@@ -7,6 +7,7 @@ verify_ssl = true
 boto3 = "*"
 click = "*"
 prettytable = "*"
+urllib3 = ">=1.26.18"
 
 [requires]
 python_version = ">=3.10"
