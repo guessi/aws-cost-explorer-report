@@ -79,7 +79,8 @@ def fill_table_content(results: list, start: str, end: str) -> None:
 @click.option('-P', '--profile', help='profile name')
 @click.option('-S', '--start', help='start date (default: 1st date of current month)')
 @click.option('-E', '--end', help='end date (default: last date of current month)')
-def report(profile: str, start: str, end: str) -> None:
+@click.option('--sort/--no-sort', default=False)
+def report(profile: str, start: str, end: str, sort: bool) -> None:
     # set start/end to current month if not specify
     if not start or not end:
         # get last day of month by `monthrange()`
@@ -96,7 +97,10 @@ def report(profile: str, start: str, end: str) -> None:
     results = get_cost_and_usage(bclient, start, end)
     fill_table_content(results, start, end)
 
-    print(pt)
+    if sort:
+        print(pt.get_string(sortby="Amount", reversesort=True))
+    else:
+        print(pt)
 
 
 if __name__ == '__main__':
