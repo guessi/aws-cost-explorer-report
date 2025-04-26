@@ -23,33 +23,20 @@ pt.align["Amount"] = "r"
 
 def get_cost_and_usage(bclient: object, start: str, end: str) -> list:
     cu = []
+    params = {
+        'TimePeriod': {'Start': start, 'End': end},
+        'Granularity': 'MONTHLY',
+        'Metrics': ['UnblendedCost'],
+        'GroupBy': [
+            {'Type': 'DIMENSION', 'Key': 'LINKED_ACCOUNT'},
+            {'Type': 'DIMENSION', 'Key': 'SERVICE'}
+        ]
+    }
 
     while True:
-        data = bclient.get_cost_and_usage(
-            TimePeriod={
-                'Start': start,
-                'End':  end,
-            },
-            Granularity='MONTHLY',
-            Metrics=[
-                'UnblendedCost',
-            ],
-            GroupBy=[
-                {
-                    'Type': 'DIMENSION',
-                    'Key': 'LINKED_ACCOUNT',
-                },
-                {
-                    'Type': 'DIMENSION',
-                    'Key': 'SERVICE',
-                }
-            ],
-        )
-
-        cu += data['ResultsByTime']
-        token = data.get('NextPageToken')
-
-        if not token:
+        data = bclient.get_cost_and_usage(**params)
+        cu.extend(data['ResultsByTime'])
+        if not data.get('NextPageToken'):
             break
 
     return cu
@@ -72,8 +59,8 @@ def fill_table_content(results: list, start: str, end: str) -> None:
                 group['Keys'][1],
                 format(amount, '0.5f'),
             ])
-    print("Total: {:5f}".format(total))
 
+    print(f"Total: {total:5f}")
 
 @click.command()
 @click.option('-P', '--profile', help='profile name')
