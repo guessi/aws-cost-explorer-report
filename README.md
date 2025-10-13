@@ -11,12 +11,6 @@
 $ pipenv install
 ```
 
-or
-
-```bash
-$ pip3 install -r requirements.txt
-```
-
 ## Usage
 
 ```bash
@@ -25,10 +19,13 @@ $ ./aws-cost-explorer-report.py --help
 Usage: aws-cost-explorer-report.py [OPTIONS]
 
 Options:
-  -P, --profile TEXT  profile name
-  -S, --start TEXT    start date (default: 1st date of current month)
-  -E, --end TEXT      end date (default: last date of current month)
-  --help              Show this message and exit.
+  -P, --profile TEXT            profile name
+  -S, --start TEXT              start date (default: 1st date of current
+                                month)
+  -E, --end TEXT                end date (default: last date of current month)
+  --sort / --no-sort
+  -o, --output [table|csv|tsv]  output format
+  --help                        Show this message and exit.
 ```
 
 ## Examples
@@ -43,23 +40,9 @@ $ ./aws-cost-explorer-report.py -P my-profile -S 2024-01-01 -E 2024-01-31
 +-----------------+---------------+----------------------------------------+------------+
 | 2024-01-01      | 123456789012  | AWS Key Management Service             |    1.39938 |
 | 2024-01-01      | 123456789012  | AWS Lambda                             |    3.00102 |
-| 2024-01-01      | 123456789012  | EC2 - Other                            |   11.48211 |
-| 2024-01-01      | 123456789012  | Amazon Elastic Compute Cloud - Compute |  102.41709 |
-| 2024-01-01      | 123456789012  | Amazon Elastic Load Balancing          |   17.73890 |
-| 2024-01-01      | 123456789012  | Amazon Route 53                        |    1.32980 |
-| 2024-01-01      | 123456789012  | Amazon Simple Notification Service     |    2.32891 |
-| 2024-01-01      | 123456789012  | Amazon Simple Storage Service          |    3.34789 |
-| 2024-01-01      | 123456789012  | AmazonCloudWatch                       |   10.32789 |
-| 2024-01-01      | 123456789012  | AWS Key Management Service             |    3.97408 |
-| 2024-01-01      | 123456789012  | AWS Lambda                             |   23.44120 |
-| 2024-01-01      | 123456789012  | EC2 - Other                            |   12.30661 |
-| 2024-01-01      | 123456789012  | Amazon Elastic Compute Cloud - Compute |  127.45739 |
-| 2024-01-01      | 123456789012  | Amazon Elastic Load Balancing          |   18.15638 |
-| 2024-01-01      | 123456789012  | Amazon Route 53                        |    1.32456 |
-| 2024-01-01      | 123456789012  | Amazon Simple Notification Service     |    2.00011 |
-| 2024-01-01      | 123456789012  | Amazon Simple Storage Service          |    3.63218 |
-| 2024-01-01      | 123456789012  | AmazonCloudWatch                       |   10.06860 |
+| ...             | ...           | ...                                    |        ... |
 +-----------------+---------------+----------------------------------------+------------+
+Total: 103.65606
 ```
 
 ## Equivalent command with `awscli`
